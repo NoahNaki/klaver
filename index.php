@@ -15,7 +15,7 @@ include_once 'includes/nav.inc.php'
 ?>
 <main>
     <section>
-        <h1>Welkom</h1>
+        <h1>Welkom test</h1>
     </section>
 
 </main>
