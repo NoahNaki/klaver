@@ -1,12 +1,14 @@
 <nav>
     <ul>
         <li><a href="index.php">home</a></li>
+        <li><a href="login.php">Inloggen</a></li>
+        <li><a href="register.php">registreren</a></li>
         <li>
             <span>
-                test
+                Dropdown
             </span>
             <ul>
-                <!-- drop down content -->
+                <li><a href="register.php">Dropdown content</a></li>
             </ul>
         </li>
     </ul>

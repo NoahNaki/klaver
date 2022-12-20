@@ -15,9 +15,9 @@ include_once 'includes/nav.inc.php'
 ?>
 <main>
     <section>
-        <h1>Welkom</h1>
+        <br>
+        <h1>Welkom fijne mijheer/mevrouw</h1>
     </section>
-
 </main>
 </body>
 </html>
