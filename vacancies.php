@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
 <body>
+<link rel="stylesheet" href="assets/stylesheets/style.css">
+
 
 <?php
+include_once 'includes/nav.inc.php'
+?>
+
+<?php
+
 $servername = "localhost";
 $username = "root";
 $password = "mysql1234";
@@ -15,10 +22,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// SQL query for table information
 $sql = "SELECT type, company, category, placedate, education, time, salary  FROM vacancies";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
+    //top column for table names
     echo "<table><tr><th>type</th><th>company</th><th>category</th><th>placedate</th><th>education</th><th>time</th><th>salary</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -30,6 +39,7 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
+
 ?>
 
 </body>
