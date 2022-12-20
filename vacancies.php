@@ -8,6 +8,8 @@
 include_once 'includes/nav.inc.php'
 ?>
 
+<br>
+
 <?php
 
 $servername = "localhost";
@@ -21,6 +23,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+?>
+
+<form id="form"> 
+  <input type="search" id="query" name="q" placeholder="Search...">
+  <button>Search</button>
+</form>
+
+<?php
 
 // SQL query for table information
 $sql = "SELECT type, company, category, placedate, education, time, salary  FROM vacancies";

@@ -78,7 +78,7 @@ function redirect($url, $statusCode = 303)
             <footer>
                 <button>Inloggen &rightarrow;</button>
                 &nbsp;
-                <a href="resetpassword.php">Ik ben mijn gegevens kwijt &rightarrow;</a>
+                <a href="reset-password.php">Wachtwoord vergeten &rightarrow;</a>
             </footer>
         </form>
     </section>
