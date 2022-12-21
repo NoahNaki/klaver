@@ -24,5 +24,8 @@ include_once 'includes/nav.inc.php'
         remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
         Lorem Ipsum passages, </p>
 </main>
+<?php
+include_once 'includes/footer.inc.php'
+?>
 </body>
 </html>
