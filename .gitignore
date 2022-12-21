@@ -1,1 +1,11 @@
-.idea
+# Ignore IDE specific files
+.idea/
+.vscode/
+*.sw*
+
+# Ignore the build directory
+/dist
+klas-management-systeem/
+
+# Ignore the db connect file
+includes/db.inc.php
