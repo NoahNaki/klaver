@@ -16,14 +16,40 @@ include_once 'includes/nav.inc.php'
 <main>
     <section>
         <br>
-        <h1>Algemenen voorwaarden</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus vehicula odio, nec ornare ante mattis sed. Nam pharetra turpis erat. Curabitur ut bibendum nulla. Vivamus dictum interdum lacus, sed molestie neque laoreet quis. Sed dignissim eu nulla quis semper. Donec euismod, nisi et tempor porta, augue mauris vehicula ex, at aliquam felis mauris ac quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vulputate, dolor eu lacinia pretium, nibh justo egestas lacus, nec malesuada sem metus at risus.
-        </p>
-        <p> Donec dignissim massa rhoncus metus eleifend accumsan vitae sit amet risus. Morbi condimentum enim urna, nec blandit ex elementum vitae. Praesent scelerisque, odio ac imperdiet dignissim, dui tortor condimentum lorem, vitae congue libero tellus nec sapien. Donec luctus tellus in placerat consectetur. Proin nunc turpis, lobortis in hendrerit in, faucibus ornare nisl. Proin malesuada non lectus non eleifend. Donec ex orci, pretium sit amet dolor et, dignissim commodo augue. Maecenas nec neque aliquet, feugiat turpis rhoncus, pharetra tortor.</p>
+        <h1>Welkom fijne mijheer/mevrouw</h1>
     </section>
 </main>
-<?php
-include_once 'includes/footer.inc.php'
-?>
+<body>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>Comapny info</h4>
+              <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+          </div>
+          <div class="footer-col">
+            <h4>Get help</h4>
+            <ul>
+              <li><a href="#">Lorem nogwat</a></li>
+              <li><a href="#">Lorem nogwat</a></li>
+              <li><a href="#">Lorem nogwat</a></li>
+              <li><a href="#">Lorem nogwat</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>online</h4>
+            <ul>
+              <li><a href="#">home</a></li>
+              <li><a href="#">Voorlichting</a></li>
+              <li><a href="#">Voorwaarden</a></li>
+              <li><a href="#">Vacatures</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 </body>
+    <p class="copyright">
+       Copyright &copy; <span id="current-year">2022</span> XXL
+      </p>
 </html>

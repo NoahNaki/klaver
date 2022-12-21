@@ -36,7 +36,61 @@ b,
 strong {
     font-weight: bolder;
 }
-
+/* Footer css cristiano ronadlo suwy */
+.container {
+    max-width: 1180;
+    margin: auto;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+ul {
+    list-style: none;
+}
+.footer {
+    padding: 70px 0;
+}
+.footer-col {
+    width: 30%;
+    padding: 100 15px;
+}
+.footer-col h4 {
+    font-size: 18px;
+    text-transform: capitalize;
+    margin-bottom: px;
+    font-weight: 500;
+    position: relative;
+}
+.footer-col h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.footer-col ul li:not(:last-child) {
+    margin-bottom: 1px;
+}
+.footer-col ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+.footer-col ul li a:hover {
+    color: black;
+    padding-left: 8px;
+}
+.copyright {
+    color: gray;
+}
 code,
 kbd,
 pre,
@@ -499,9 +553,6 @@ picture {
         padding-right: 0.5rem;
         padding-left: 0.5rem;
         margin: 0.5rem auto;
-    }
-    ul {
-        list-style: none;
     }
 
     nav ul li {
