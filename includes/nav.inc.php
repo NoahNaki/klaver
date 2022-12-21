@@ -1,7 +1,7 @@
 <div id="logo"> 
 </div>
 <nav>
-<img src="assets/img/xxlogo.png" alt="logo" width="120" height="60">
+<img src="assets/img/xxl.png" alt="logo" width="120" height="60">
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="login.php">Inloggen</a></li>
