@@ -8,7 +8,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 
 $username       = "root";
-$password       = "";
+$password       = "mysql1234";
 $servername     = "localhost";
 $dbname         = "klaver";
 

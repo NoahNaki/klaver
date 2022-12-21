@@ -14,7 +14,7 @@ include_once 'includes/nav.inc.php'
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "mysql1234";
 $dbname = "klaver";
 
 // Create connection
