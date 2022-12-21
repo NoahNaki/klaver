@@ -14,7 +14,7 @@ include_once 'includes/nav.inc.php'
 
 $servername = "localhost";
 $username = "root";
-$password = "P@ssw0rd";
+$password = "mysql1234";
 $dbname = "klaver";
 
 // Create connection
@@ -49,7 +49,7 @@ include_once 'includes/nav.inc.php'
         </label>
         <footer>
             <button>Search</button>
-        </footer
+        </footer>
     </form>
 <br>
 </section>
