@@ -12,35 +12,34 @@
       <div class="container">
         <div class="row">
           <div class="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Who</a></li>
-              <li><a href="#">The fack</a></li>
-              <li><a href="#"> Sdkrf</a></li>
-            </ul>
+            <h4>Comapny info</h4>
+              <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
           </div>
           <div class="footer-col">
             <h4>Get help</h4>
             <ul>
-              <li><a href="#">help</a></li>
-              <li><a href="#">geen help</a></li>
-              <li><a href="#">rot op</a></li>
-              <li><a href="#">marokkaan</a></li>
+              <li><a href="#">Lorem nogwat</a></li>
+              <li><a href="#">Lorem nogwat</a></li>
+              <li><a href="#">Lorem nogwat</a></li>
+              <li><a href="#">Lorem nogwat</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>online</h4>
             <ul>
-              <li><a href="#">offline</a></li>
-              <li><a href="#">onlnie</a></li>
-              <li><a href="#">negative</a></li>
-              <li><a href="#">posetive</a></li>
+              <li><a href="#">home</a></li>
+              <li><a href="#">Voorlichting</a></li>
+              <li><a href="#">Voorwaarden</a></li>
+              <li><a href="#">Vacatures</a></li>
             </ul>
           </div>
         </div>
       </div>
     </footer>
+</body>
+    <p class="copyright">
+       Copyright &copy; <span id="current-year">2022</span> XXL
+      </p>
     
   
 </body>
