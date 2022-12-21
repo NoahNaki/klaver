@@ -25,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                  * User roles & types:
                  * Roles: user, admin and system admin
                  * Types: regular, company
-                 * @var $userrole string is the user a company or a regular foe?
-                 * @var $userype string the user role saved as a variable
+                 * @var string $userrole string is the user a company or a regular foe?
+                 * @var string $userype string the user role saved as a variable
                  */
                 if ($userrole != 'user') {
                     $_SESSION['userRole'] = 'user';
