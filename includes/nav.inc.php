@@ -1,4 +1,9 @@
+<div id="logo"> 
+
+</div>
+
 <nav>
+<img src="assets/img/xxlogo.png" alt="logo" width="100" height="50">
     <ul>
         <li><a href="index.php">home</a></li>
         <li><a href="login.php">Inloggen</a></li>

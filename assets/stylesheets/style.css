@@ -477,6 +477,15 @@ picture {
         overflow-x: hidden
     }
 
+    #logo{ 
+        position: relative;
+        margin-top: 10px; 
+        left:-64%;
+
+        
+        
+    } 
+
     nav {
         display: flex;
         background-color: var(--background-color);
