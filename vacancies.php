@@ -14,7 +14,7 @@ include_once 'includes/nav.inc.php'
 
 $servername = "localhost";
 $username = "root";
-$password = "mysql1234";
+$password = "";
 $dbname = "klaver";
 
 // Create connection
@@ -26,8 +26,8 @@ if ($conn->connect_error) {
 ?>
 
 <form id="form"> 
-  <input type="search" id="query" name="q" placeholder="Search...">
-  <button>Search</button>
+  <input type="search" id="query" name="q" placeholder="Zoeken...">
+  <button>Zoeken</button>
 </form>
 
 <?php
