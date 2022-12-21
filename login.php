@@ -94,6 +94,9 @@ function redirect($url, $statusCode = 303)
                 Wachtwoord:
                 <input type="password" name="password" id="password">
             </label>
+            <label>
+                <input type="checkbox" name="corp" id="corp">Ik ben een organisatie
+            </label>
             <footer>
                 <button>Inloggen &rightarrow;</button>
                 &nbsp;
