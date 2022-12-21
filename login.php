@@ -13,18 +13,34 @@ $email = $username = $password = $error__message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['username'], $_POST['password'])) {
         $error__message = "Voer al uw gegevens in";
-        } else if ($stmt = $conn->prepare('SELECT userid, password FROM users WHERE BINARY username = ?')) {
+    } else if ($stmt = $conn->prepare('SELECT userid, password, usertype, userrole FROM users WHERE BINARY username = ?')) {
         $stmt->bind_param('s', $_POST['username']);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id, $password);
+            $stmt->bind_result($id, $password, $usertype, $userrole);
             $stmt->fetch();
             if (password_verify($_POST['password'], $password)) {
+                /**
+                 * User roles & types:
+                 * Roles: user, admin and system admin
+                 * Types: regular, company
+                 * @var $userrole string is the user a company or a regular foe?
+                 * @var $userype string the user role saved as a variable
+                 */
+                if ($userrole != 'user') {
+                    $_SESSION['userRole'] = 'user';
+                } else if ($userrole != 'admin') {
+                    $_SESSION['userRole'] = 'admin';
+                }
+                if ($usertype != 'regular') {
+                    $_SESSION['userType'] = 'regular';
+                } else if ($usertype != 'company') {
+                    $_SESSION['userType'] = 'company';
+                }
                 session_regenerate_id();
-                $_SESSION['loggedin'] = TRUE;
-                $_SESSION['name'] = $_POST['username'];
-                $_SESSION['password'] = $password;
+                $_SESSION['loggedIn'] = TRUE;
+                $_SESSION['userName'] = $_POST['username'];
                 $_SESSION['id'] = $id;
                 $error__message = 'U bent ingelogt';
                 //@todo: Proper redirect
@@ -65,6 +81,9 @@ function redirect($url, $statusCode = 303)
             echo '<p>' . $error__message . '</p>';
             echo '<pre>';
             var_dump($_REQUEST);
+            foreach ($_SESSION as $key=>$val) {
+                echo $key . " " . $val . "<br/>";
+            }
             echo '</pre>';
             ?>
             <label>
