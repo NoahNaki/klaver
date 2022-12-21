@@ -14,7 +14,7 @@ include_once 'includes/nav.inc.php'
 
 $servername = "localhost";
 $username = "root";
-$password = "mysql1234";
+$password = "P@ssw0rd";
 $dbname = "klaver";
 
 // Create connection
@@ -25,10 +25,35 @@ if ($conn->connect_error) {
 }
 ?>
 
-<form id="form"> 
-  <input type="search" id="query" name="q" placeholder="Search...">
-  <button>Search</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/stylesheets/style.css">
+    <title>Title</title>
+</head>
+<body>
+<?php
+/**
+ * Includes the navbar for better code re-usability
+ *
+ */
+include_once 'includes/nav.inc.php'
+?>
+<main>
+<br>
+<section>
+    <form id="form">
+        <label>
+            <input type="search" id="query" name="q" placeholder="Search...">
+        </label>
+        <footer>
+            <button>Search</button>
+        </footer
+    </form>
+<br>
+</section>
+<section>
 
 <?php
 
@@ -51,6 +76,9 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 ?>
-
+    </section>
+</main>
+</body>
+</html>
 </body>
 </html>
