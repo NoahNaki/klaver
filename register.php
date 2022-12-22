@@ -4,9 +4,7 @@
  *
  * It validates user input, and puts this in the db.
  *
- * @author Brandinios
- * @link https://github.com/aamaanaa
- * @version 1.0.0
+ * @TODO: need to know if the registered person is a company or not
  */
 
 /**
@@ -17,13 +15,14 @@
 require_once('includes/db.inc.php');
 global $conn;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 $email = $username = $password = $error__message = "";
 
-
+/**
+ * If the method is post, handles userlogin
+ *
+ * @TODO: refactor if else
+ */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
         $error__message = 'Vul all uw gegevens in';
@@ -36,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
         $error__message = "Uw Wachtwoord moet tussen de 5 en 20 characters lang zijn";
     } else {
-        if ($stmt = $conn->prepare('SELECT userid, password FROM users WHERE username = ?')) {
+        if ($stmt = $conn->prepare('SELECT userID, userPassword FROM users WHERE userName = ?')) {
             $stmt->bind_param('s', $_POST['username']);
             $stmt->execute();
             $stmt->store_result();
@@ -44,11 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $error__message = 'Username exists, please choose another!';
             } else {
                 //if ($stmt = $conn->prepare("INSERT INTO users (username, password, email, createdat, usertype, userrole) VALUES (?, ?, ?, current_timestamp(), 'regular', 'user')")) {
-                  if ($stmt = $conn->prepare("INSERT INTO users (username, createdat, password, usermail, usertype, userrole) VALUES (?, current_timestamp(), ?, ?, 'regular', 'user') ")) {
+                  if ($stmt = $conn->prepare("INSERT INTO users (userName, userCreatedTime, userPassword, userEmail, userType, userRole) VALUES (?, current_timestamp(), ?, ?, 'regular', 'user') ")) {
                     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
                     $stmt->execute();
-                    $error__message = '<pre>' . var_dump($stmt) . '</pre>';
+                    $error__message = '<pre>' . var_export($stmt,false) . '</pre>';
                     $_SESSION["username"] = $_POST['username'];
                 } else {
                     $error__message = 'Could not prepare statement!';
@@ -61,6 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+/**
+ * Redirect function to redirect to other page
+ *
+ * @param mixed $url
+ * @param mixed $statusCode
+ * @return void
+ */
 function redirect($url, $statusCode = 303)
 {
     header('Location: ' . $url, true, $statusCode);
@@ -86,10 +92,14 @@ function redirect($url, $statusCode = 303)
     <section>
         <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
             <?php
-            echo '<p>' . $error__message . '</p>';
-            echo '<pre>';
-            var_dump($_REQUEST);
-            echo '</pre>';
+            /**
+             * Checks if the message is set, if so outputs it above the form
+             *
+             * @var string $error__message the message for the user
+             */
+            if (isset($error__message)) {
+                echo '<p>' . $error__message . '</p>';
+            }
             ?>
             <label>
                 Gebruikersnaam:

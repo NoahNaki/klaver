@@ -1,4 +1,4 @@
-<div id="logo"> 
+<div id="logo">
 
 </div>
 
@@ -8,6 +8,7 @@
         <li><a href="index.php">home</a></li>
         <li><a href="login.php">Inloggen</a></li>
         <li><a href="register.php">registreren</a></li>
+        <li><a href="logout.php">loguit</a></li>
         <li><a href="vacancies.php">vacatures</a></li>
         <li>
             <span>
