@@ -41,6 +41,7 @@ if(isset($_POST['search'])) {
     $searchq = $_POST['search'];
     $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
 
+
     
     /*haalt info uit vacancies dan tabel naam*/
 
