@@ -3,7 +3,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "mysql1234";
 $dbname = "klaver";
 
 // Create connection
