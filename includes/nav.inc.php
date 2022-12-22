@@ -13,7 +13,7 @@
             echo '<li>' . '<a href=register.php>Registreren</a></li>';
         }
         ?>
-        <li><a href="vacancies.php">vacatures</a></li>
+        <li><a href="vacancies.php">Vacatures</a></li>
         <li>
             <!-- language selection dropdown -->
             <select name="language-picker-select" id="language-picker-select">
