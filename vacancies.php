@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -56,18 +59,17 @@ if(isset($_POST['search'])) {
     echo '<th>Education</th>';
     echo '<th>Time</th>';
     echo '<th>Salary</th>';
+    echo '</tr>';
 
-    
-   
-  echo '</tr>';
+
   echo '<tr>';
-  echo '<td>' . $row['company'] . '</td>';
-  echo '<td>' . $row['type'] . '</td>';
-  echo '<td>' . $row['category'] . '</td>';
-  echo '<td>' . $row['placedate'] . '</td>';
-  echo '<td>' . $row['education'] . '</td>';
-  echo '<td>' . $row['time'] . '</td>';
-  echo '<td>' . $row['salary'] . '</td>';
+  echo '<td>' . $row["company"] . '</td>';
+  echo '<td>' . $row["type"] . '</td>';
+  echo '<td>' . $row["category"] . '</td>';
+  echo '<td>' . $row["placedate"] . '</td>';
+  echo '<td>' . $row["education"] . '</td>';
+  echo '<td>' . $row["time"] . '</td>';
+  echo '<td>' . $row["salary"] . '</td>';
   
   echo '</tr>';
 echo '</table>';
