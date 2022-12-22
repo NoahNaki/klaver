@@ -1,12 +1,19 @@
-<div id="logo"> 
+<div id="logo">
+
 </div>
 <nav>
 <img src="assets/img/xxl.png" alt="logo" width="120" height="60">
     <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="login.php">Inloggen</a></li>
-        <li><a href="register.php">Registreren</a></li>
-        <li><a href="vacancies.php">Vacatures</a></li>
+        <?php
+        if(isset($_SESSION['loggedIn'])) {
+            echo '<li>' . '<a href=logout.php>Uitloggen</a></li>';
+        } else {
+            echo '<li>' . '<a href=login.php>Inloggen</a></li>';
+            echo '<li>' . '<a href=register.php>Registreren</a></li>';
+        }
+        ?>
+        <li><a href="vacancies.php">vacatures</a></li>
         <li>
             <!-- language selection dropdown -->
             <select name="language-picker-select" id="language-picker-select">
