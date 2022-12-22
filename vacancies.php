@@ -19,7 +19,9 @@ include_once 'includes/nav.inc.php';
 
 
 <?php
+/*Database*/
 include('includes/db.inc.php');
+
 
 
 
