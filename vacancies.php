@@ -16,6 +16,8 @@ include_once 'includes/nav.inc.php';
   <input type="submit" value="Zoek" />
 </form>
 
+
+
 <?php
 /*db connetie #2 moet er eigenlijk uit */
 
@@ -31,27 +33,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// SQL query for table information
-$sql = "SELECT type, company, category, placedate, education, time, salary  FROM vacancies";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    //top column for table names
-    echo "<table><tr><th>type</th><th>company</th><th>category</th><th>placedate</th><th>education</th><th>time</th><th>salary</th></tr>";
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["type"]. "</td><td>" . $row["company"]. "</td><td>" . $row["category"]. "</td><td>" . $row["placedate"]. "</td><td>" . $row["education"]. "</td><td>" . $row["time"]. "</td><td>" . $row["salary"]. "</td><td>";
-    }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
-
-$conn->close();
-
-?>
-
-<?php
 
 
 /*data verzamel*/
@@ -78,7 +59,12 @@ if(isset($_POST['search'])) {
    echo '<table>';
   echo '<tr>';
     echo '<th>Company</th>';
-    echo '<th>Type></th>';
+    echo '<th>Type</th>';
+    echo '<th>Category</th>';
+    echo '<th>Placedate</th>';
+    echo '<th>Education</th>';
+    echo '<th>Time</th>';
+    echo '<th>Salary</th>';
 
     
    
@@ -101,7 +87,28 @@ echo '</table>';
 
 
 }
+
+// SQL query for table information
+$sql = "SELECT company, type, category, placedate, education, time, salary  FROM vacancies";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    //top column for table names
+    echo "<table><tr><th>Company</th><th>Type</th><th>Category</th><th>Placedate</th><th>Education</th><th>Time</th><th>Salary</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["company"]. "</td><td>" . $row["type"]. "</td><td>" . $row["category"]. "</td><td>" . $row["placedate"]. "</td><td>" . $row["education"]. "</td><td>" . $row["time"]. "</td><td>" . $row["salary"]. "</td><td>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+
 ?>
+
+
 
 <br>
 
