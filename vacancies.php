@@ -101,18 +101,12 @@ $conn->close();
 
 ?>
 
-
-
 <br>
 
-
-
-
-
-
-
 </body>
+
 <?php
 include_once 'includes/footer.inc.php';
 ?>
+
 </html>
