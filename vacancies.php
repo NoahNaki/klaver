@@ -38,7 +38,7 @@ if(isset($_POST['search'])) {
     
     /*haalt info uit vacancies dan tabel naam*/
 
-    $query = $conn->prepare("SELECT * FROM vacancies WHERE type like '%$searchq%' OR company LIKE '%$searchq%' OR category LIKE '%$searchq%' OR placedate LIKE '%$searchq%' OR education LIKE '%$searchq%' OR time LIKE '%$searchq%' OR salary LIKE '%$searchq%' ") or die("could not search!");
+    $query = $conn->prepare("SELECT * FROM vacancies WHERE type like '%$searchq%' OR bedrijf LIKE '%$searchq%' OR categorie LIKE '%$searchq%' OR plaatsdatum LIKE '%$searchq%' OR opleiding LIKE '%$searchq%' OR tijd LIKE '%$searchq%' OR salaris LIKE '%$searchq%' ") or die("could not search!");
     $query->execute();
     $result = $query->get_result(); 
     $count = $query->num_rows(); 
@@ -52,24 +52,24 @@ if(isset($_POST['search'])) {
         foreach ($rows as $row) {
    echo '<table>';
   echo '<tr>';
-    echo '<th>Company</th>';
+    echo '<th>Bedrijf</th>';
     echo '<th>Type</th>';
-    echo '<th>Category</th>';
-    echo '<th>Placedate</th>';
-    echo '<th>Education</th>';
-    echo '<th>Time</th>';
-    echo '<th>Salary</th>';
+    echo '<th>Categorie</th>';
+    echo '<th>Plaatsdatum</th>';
+    echo '<th>Opleiding</th>';
+    echo '<th>Tijd</th>';
+    echo '<th>Salaris</th>';
     echo '</tr>';
 
 
   echo '<tr>';
-  echo '<td>' . $row["company"] . '</td>';
+  echo '<td>' . $row["bedrijf"] . '</td>';
   echo '<td>' . $row["type"] . '</td>';
-  echo '<td>' . $row["category"] . '</td>';
-  echo '<td>' . $row["placedate"] . '</td>';
-  echo '<td>' . $row["education"] . '</td>';
-  echo '<td>' . $row["time"] . '</td>';
-  echo '<td>' . $row["salary"] . '</td>';
+  echo '<td>' . $row["categorie"] . '</td>';
+  echo '<td>' . $row["plaatsdatum"] . '</td>';
+  echo '<td>' . $row["opleiding"] . '</td>';
+  echo '<td>' . $row["tijd"] . '</td>';
+  echo '<td>' . $row["salaris"] . '</td>';
   
   echo '</tr>';
 echo '</table>';
@@ -82,15 +82,15 @@ echo '</table>';
 }
 
 // SQL query for table information
-$sql = "SELECT company, type, category, placedate, education, time, salary  FROM vacancies";
+$sql = "SELECT bedrijf, type, categorie, plaatsdatum, opleiding, tijd, salaris  FROM vacancies";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     //top column for table names
-    echo "<table><tr><th>Company</th><th>Type</th><th>Category</th><th>Placedate</th><th>Education</th><th>Time</th><th>Salary</th></tr>";
+    echo "<table><tr><th>Bedrijf</th><th>Type</th><th>Categorie</th><th>Plaatsdatum</th><th>Opleiding</th><th>Tijd</th><th>Salaris</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["company"]. "</td><td>" . $row["type"]. "</td><td>" . $row["category"]. "</td><td>" . $row["placedate"]. "</td><td>" . $row["education"]. "</td><td>" . $row["time"]. "</td><td>" . $row["salary"]. "</td><td>";
+        echo "<tr><td>" . $row["bedrijf"]. "</td><td>" . $row["type"]. "</td><td>" . $row["categorie"]. "</td><td>" . $row["plaatsdatum"]. "</td><td>" . $row["opleiding"]. "</td><td>" . $row["tijd"]. "</td><td>" . $row["salaris"]. "</td><td>";
     }
     echo "</table>";
 } else {
