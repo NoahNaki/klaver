@@ -1,6 +1,4 @@
-<div id="logo">
 
-</div>
 <nav>
 <img src="assets/img/xxl.png" alt="logo" width="120" height="60">
     <ul>
