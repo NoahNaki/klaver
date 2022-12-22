@@ -87,10 +87,10 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     //top column for table names
-    echo "<table><tr><th>Bedrijf</th><th>Type</th><th>Categorie</th><th>Plaatsdatum</th><th>Opleiding</th><th>Tijd</th><th>Salaris</th></tr>";
+    echo "<table><a href='#'><tr><th>Bedrijf</th><th>Type</th><th>Categorie</th><th>Plaatsdatum</th><th>Opleiding</th><th>Tijd</th><th>Salaris</th></tr></a>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["bedrijf"]. "</td><td>" . $row["type"]. "</td><td>" . $row["categorie"]. "</td><td>" . $row["plaatsdatum"]. "</td><td>" . $row["opleiding"]. "</td><td>" . $row["tijd"]. "</td><td>" . $row["salaris"]. "</td><td>";
+        echo "<a href='http://nu.nl'><tr><td>" . $row["bedrijf"]. "</td><td>" . $row["type"]. "</td><td>" . $row["categorie"]. "</td><td>" . $row["plaatsdatum"]. "</td><td>" . $row["opleiding"]. "</td><td>" . $row["tijd"]. "</td><td>" . $row["salaris"]. "</td></tr></a>";
     }
     echo "</table>";
 } else {
