@@ -1,49 +1,73 @@
 <?php
-// @TODO: set a max times of incorrect logins before a timeout
-// @todo: auto logout afther 15 minutes
-// https://stackoverflow.com/questions/37120328/how-to-limit-the-number-of-login-attempts-in-a-login-script
+/**
+ * file that handles user logins.
+ *
+ * @TODO: set a max times of incorrect logins before a timeout
+ * @todo: auto logout afther 15 minutes
+ */
+
 session_start();
 
-require_once('includes/db.inc.php');
+include('includes/db.inc.php');
 global $conn;
+
+/**
+ * Redirect function to redirect to other page
+ *
+ * @param mixed $url
+ * @param mixed $statusCode
+ * @return void
+ */
+function redirect($url, $statusCode = 303)
+{
+    header('Location: ' . $url, true, $statusCode);
+    die();
+}
 
 $email = $username = $password = $error__message = "";
 
-
+/**
+ * If the method is post, handles userlogin
+ *
+ * @TODO: refactor if else
+ */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['username'], $_POST['password'])) {
         $error__message = "Voer al uw gegevens in";
-    } else if ($stmt = $conn->prepare('SELECT userid, password, usertype, userrole FROM users WHERE BINARY username = ?')) {
+    } else if ($stmt = $conn->prepare('SELECT userID, userPassword, userType, userRole FROM users WHERE BINARY userName = ?')) {
         $stmt->bind_param('s', $_POST['username']);
+        // begin the transaction
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id, $password, $usertype, $userrole);
+            $stmt->bind_result($userID, $userPassword, $userType, $userRole);
             $stmt->fetch();
-            if (password_verify($_POST['password'], $password)) {
+            if (password_verify($_POST['password'], $userPassword)) {
                 /**
                  * User roles & types:
                  * Roles: user, admin and system admin
                  * Types: regular, company
                  * @var string $userrole string is the user a company or a regular foe?
                  * @var string $userype string the user role saved as a variable
+                 * @TODO: refactor if else
                  */
-                if ($userrole != 'user') {
+                if ($userRole != 'user') {
                     $_SESSION['userRole'] = 'user';
-                } else if ($userrole != 'admin') {
+                } else if ($userRole != 'admin') {
                     $_SESSION['userRole'] = 'admin';
                 }
-                if ($usertype != 'regular') {
+                if ($userType != 'regular') {
                     $_SESSION['userType'] = 'regular';
-                } else if ($usertype != 'company') {
+                } else if ($userType != 'company') {
                     $_SESSION['userType'] = 'company';
                 }
-                session_regenerate_id();
-                $_SESSION['loggedIn'] = TRUE;
-                $_SESSION['userName'] = $_POST['username'];
-                $_SESSION['id'] = $id;
-                $error__message = 'U bent ingelogt';
-                //@todo: Proper redirect
+                    session_regenerate_id();
+                    $_SESSION['loggedIn'] = TRUE;
+                    $_SESSION['userName'] = $_POST['username'];
+                    $_SESSION['id'] = $userID;
+                    $error__message = 'U bent ingelogt';
+                    redirect('index.php', false);
+
             } else {
                 $error__message = 'Incorrect username and/or password!';
             }
@@ -53,13 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 }
-
-function redirect($url, $statusCode = 303)
-{
-    header('Location: ' . $url, true, $statusCode);
-    die();
-}
-
 ?>
 <!DOCTYPE html>
 <body>
@@ -76,15 +93,16 @@ function redirect($url, $statusCode = 303)
     </section>
     <br>
     <section id="login__form">
-        <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
+        <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
             <?php
-            echo '<p>' . $error__message . '</p>';
-            echo '<pre>';
-            var_dump($_REQUEST);
-            foreach ($_SESSION as $key=>$val) {
-                echo $key . " " . $val . "<br/>";
+            /**
+             * Checks if the message is set, if so outputs it above the form
+             *
+             * @var string $error__message the message for the user
+             */
+            if (isset($error__message)) {
+                echo '<p>' . $error__message . '</p>';
             }
-            echo '</pre>';
             ?>
             <label>
                 Gebruikersnaam:
@@ -96,7 +114,6 @@ function redirect($url, $statusCode = 303)
             </label>
             <footer>
                 <button>Inloggen &rightarrow;</button>
-                &nbsp;
                 <a href="reset-password.php">Wachtwoord vergeten &rightarrow;</a>
             </footer>
         </form>
