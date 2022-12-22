@@ -12,26 +12,25 @@
       <div class="container">
         <div class="row">
           <div class="footer-col">
-            <h4>Comapny info</h4>
-              <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+            <h4>Contact info</h4>
+              <a>+31 064612284</a>
+              <p>UitzendbureauXXL@Gmail.com</p>
+              <p>Luba Uitzendbureau XXL, Plantsoen 28, 1741 EM Schagen</p>
+              <p>KvK: 65350510</p>
           </div>
           <div class="footer-col">
-            <h4>Get help</h4>
-            <ul>
-              <li><a href="#">Lorem nogwat</a></li>
-              <li><a href="#">Lorem nogwat</a></li>
-              <li><a href="#">Lorem nogwat</a></li>
-              <li><a href="#">Lorem nogwat</a></li>
-            </ul>
+            <h4>Wie zijn wij</h4>
+              <p>Wij zijn Uitzendbureau XXL. Wij helpen de mens op de aarbeidsmarkt om een baan tezoeken. Wij helpen Jong en oud. Heeft u help nodig of vragen kunt u altijd onze nummer bellen.
+              </p>
           </div>
           <div class="footer-col">
-            <h4>online</h4>
+            <h4>informatie</h4>
             <ul>
-              <li><a href="#">home</a></li>
+              <li><a href="index.php">Thuis</a></li>
+              <li><a href="vacancies.php">Vacatures</a></li>
               <li><a href="#">Voorlichting</a></li>
-              <li><a href="#">Voorwaarden</a></li>
-              <li><a href="#">Vacatures</a></li>
-            </ul>
+              <li><a href="algemeen.php">Voorwaarden</a></li>
+</ul>
           </div>
         </div>
       </div>
