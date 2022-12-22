@@ -19,19 +19,7 @@ include_once 'includes/nav.inc.php';
 
 
 <?php
-/*db connetie #2 moet er eigenlijk uit */
-
-$servername = "localhost";
-$username = "root";
-$password = "mysql1234";
-$dbname = "klaver";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include('includes/db.inc.php');
 
 
 
