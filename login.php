@@ -112,9 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Wachtwoord:
                 <input type="password" name="password" id="password">
             </label>
-            <label>
-                <input type="checkbox" name="corp" id="corp">Ik ben een organisatie
-            </label>
             <footer>
                 <button>Inloggen &rightarrow;</button>
                 <a href="reset-password.php">Wachtwoord vergeten &rightarrow;</a>

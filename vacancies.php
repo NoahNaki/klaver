@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html>
-<body>
-<link rel="stylesheet" href="assets/stylesheets/style.css">
-
-
 <?php
-include_once 'includes/nav.inc.php'
-?>
-
-<br>
-
-<?php
+/*db connetie #2 moet er eigenlijk uit */
 
 $servername = "localhost";
 $username = "root";
-$password = "P@ssw0rd";
+$password = "mysql1234";
 $dbname = "klaver";
 
 // Create connection
@@ -23,62 +12,78 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/stylesheets/style.css">
-    <title>Title</title>
-</head>
-<body>
-<?php
-/**
- * Includes the navbar for better code re-usability
- *
- */
-include_once 'includes/nav.inc.php'
-?>
-<main>
-<br>
-<section>
-    <form id="form">
-        <label>
-            <input type="search" id="query" name="q" placeholder="Search...">
-        </label>
-        <footer>
-            <button>Search</button>
-        </footer
-    </form>
-<br>
-</section>
-<section>
+/*data verzamel*/
 
-<?php
+if(isset($_POST['search'])) {
+    $searchq = $_POST['search'];
+    $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
 
-// SQL query for table information
-$sql = "SELECT type, company, category, placedate, education, time, salary  FROM vacancies";
-$result = $conn->query($sql);
+    
+    /*haalt info uit vacancies dan tabel naam*/
 
-if ($result->num_rows > 0) {
-    //top column for table names
-    echo "<table><tr><th>type</th><th>company</th><th>category</th><th>placedate</th><th>education</th><th>time</th><th>salary</th></tr>";
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["type"]. "</td><td>" . $row["company"]. "</td><td>" . $row["category"]. "</td><td>" . $row["placedate"]. "</td><td>" . $row["education"]. "</td><td>" . $row["time"]. "</td><td>" . $row["salary"]. "</td><td>";
+    $query = $conn->prepare("SELECT * FROM vacancies WHERE type like '%$searchq%' OR company LIKE '%$searchq%' OR category LIKE '%$searchq%' OR placedate LIKE '%$searchq%' OR education LIKE '%$searchq%' OR time LIKE '%$searchq%' OR salary LIKE '%$searchq%' ") or die("could not search!");
+    $query->execute();
+    $result = $query->get_result(); 
+    $count = $query->num_rows(); 
+    if(strlen($count) < 0) {
+        $output = 'there was no such result!';
     }
-    echo "</table>";
-} else {
-    echo "0 results";
+    else {
+
+
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        foreach ($rows as $row) {
+   echo '<table>';
+  echo '<tr>';
+    echo '<th>Company</th>';
+    echo '<th>Type></th>';
+
+    
+   
+  echo '</tr>';
+  echo '<tr>';
+  echo '<td>' . $row['company'] . '</td>';
+  echo '<td>' . $row['type'] . '</td>';
+  echo '<td>' . $row['category'] . '</td>';
+  echo '<td>' . $row['placedate'] . '</td>';
+  echo '<td>' . $row['education'] . '</td>';
+  echo '<td>' . $row['time'] . '</td>';
+  echo '<td>' . $row['salary'] . '</td>';
+  
+  echo '</tr>';
+echo '</table>';
+                }
+        
+    }
+
+
+
 }
-
-$conn->close();
-
 ?>
-    </section>
-</main>
+<!DOCTYPE html>
+<html>
+<body>
+<link rel="stylesheet" href="assets/stylesheets/style.css">
+
+
+<?php
+include_once 'includes/nav.inc.php'; 
+?>
+
+<br>
+
+
+<form method="post"> 
+  <input type="text" name="search" placeholder="zoeken"/>
+  <input type="submit" value="Zoek" />
+</form>
+
+
+
+
 </body>
-</html>
-</body>
+<?php
+include_once 'includes/footer.inc.php';
+?>
 </html>

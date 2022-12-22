@@ -111,7 +111,7 @@ function redirect($url, $statusCode = 303)
             </label>
             <label>
                 Wachtwoord:
-                <input type="password" name="password" id="password" value="<?php echo $password; ?>">
+                <input type="password" name="password" id="password">
             </label>
             <label>
                 <input type="checkbox" name="corp" id="corp">Ik ben een organisatie
