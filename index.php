@@ -27,7 +27,9 @@ include_once 'includes/nav.inc.php'
         <h1>
             <?php
             if (isset($_SESSION['id'])) {
-                echo '<p>' . 'Welkom, '. $_SESSION['userName'] . '!</p>';
+                echo 'Welkom, '. $_SESSION['userName'] . '!';
+            } else {
+                echo 'Welkom!';
             }
             ?>
         </h1>
