@@ -28,7 +28,7 @@
             <ul>
               <li><a href="index.php">Thuis</a></li>
               <li><a href="vacancies.php">Vacatures</a></li>
-              <li><a href="#">Voorlichting</a></li>
+              <li><a href="voorlichting.php">Voorlichting</a></li>
               <li><a href="algemeen.php">Voorwaarden</a></li>
 </ul>
           </div>
