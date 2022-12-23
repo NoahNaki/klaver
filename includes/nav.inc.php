@@ -15,8 +15,8 @@
         <li>
             <!-- language selection dropdown -->
             <select name="language-picker-select" id="language-picker-select">
-      <option lang="nl" value="dutch">Dutch</option>
-      <option lang="en" value="english" selected>English</option>
+      <option lang="nl" value="dutch">NL</option>
+      <option lang="en" value="english" selected>EN</option>
     </select>
         </li>
     </ul>
